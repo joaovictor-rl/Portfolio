@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JV | Portfólio</title>
+  <meta name="description" content="Portfólio de João Victor Reis Lisboa, estudante de Sistemas de Informação na UFPA — front-end, Python e dados.">
+  <meta name="theme-color" content="#1f3dff">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/nome.css">
+  <link rel="stylesheet" href="assets/css/lista.css">
+  <link rel="stylesheet" href="assets/css/projetos.css">
+</head>
+<body class="intro">
+
+  <!-- Lista de projetos (lado direito) -->
+  <main class="palco">
+    <h1 class="sr-only">Projetos de João Victor Lisboa</h1>
+    <ul class="projetos">
+      <li><a href="#p-cursor" data-abrir="p-cursor">Cursor<small>2026 · Python + React</small></a></li>
+      <li><a href="#p-labiocad" data-abrir="p-labiocad">LaBio-<br>CAD<small>2025 · React + TypeScript</small></a></li>
+    </ul>
+  </main>
+
+  <!-- Marca e informações (canto inferior esquerdo) -->
+  <header class="marca">
+    <a href="#sobre" data-abrir="sobre" class="logo" aria-label="João Victor Lisboa — sobre mim">
+      <span class="linha"><span>João</span></span>
+      <span class="linha"><span>Victor</span></span>
+      <span class="linha"><span>Lisboa.</span></span>
+    </a>
+
+    <div class="info">
+      <ul>
+        <li>Estudante de Sistemas de Informação</li>
+        <li>Front-end · Python · Dados</li>
+      </ul>
+      <ul>
+        <li>Ananindeua, Pará</li>
+        <li><a href="mailto:joao@lisboa.icen.ufpa.br">joao@lisboa.icen.ufpa.br</a></li>
+      </ul>
+      <nav aria-label="Principal">
+        <ul>
+          <li><a href="#sobre" data-abrir="sobre"><small>01</small>sobre</a></li>
+          <li><a href="https://github.com/joaovictor-rl" target="_blank" rel="noopener noreferrer"><small>02</small>github</a></li>
+          <li><a href="https://www.linkedin.com/in/jo%C3%A3o-victor-reis-lisboa-22b596373" target="_blank" rel="noopener noreferrer"><small>03</small>linkedin</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Painel "Sobre" -->
+  <dialog class="painel" id="sobre" aria-labelledby="sobre-titulo">
+    <button class="fechar" data-fechar aria-label="Voltar">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5M11 5l-7 7 7 7"/></svg>
+    </button>
+
+    <h2 id="sobre-titulo" class="painel-destaque">Estudante de Sistemas de Informação na UFPA, focado em front-end, Python e visualização de dados.</h2>
+    <p class="painel-texto">Faço parte do GERCOM, grupo de pesquisa em redes de computadores da UFPA, e da LARAF, liga de robótica da FACI Wyden, onde cuido do design e da UX do projeto SENSE.</p>
+    <p class="painel-texto">Hoje sou estagiário de Suporte Técnico na Escola de Música da UFPA, onde cuido do laboratório de informática e atendo os setores administrativos. É de lá que vêm as ideias de vários dos meus projetos.</p>
+
+    <div class="colunas">
+      <div>
+        <h3>Formação —</h3>
+        <ul>
+          <li>Bacharelado em Sistemas de Informação</li>
+          <li>UFPA, 2025 – 2028</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Grupos e projetos —</h3>
+        <ul>
+          <li>GERCOM, UFPA</li>
+          <li>LARAF (projeto SENSE), FACI Wyden</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Tecnologias —</h3>
+        <ul>
+          <li>Python, FastAPI, pandas</li>
+          <li>JavaScript, React, Recharts</li>
+          <li>HTML e CSS</li>
+          <li>SQL e PostgreSQL</li>
+          <li>Java, Git e GitHub</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Certificações —</h3>
+        <ul>
+          <li>Google Data Analytics (2026)</li>
+          <li>Microsoft Azure Fundamentals AZ-900 (2026)</li>
+          <li>Cisco: Redes e Cibersegurança (2026)</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Experiência —</h3>
+        <ul>
+          <li>Suporte Técnico (estágio), Escola de Música da UFPA</li>
+          <li>Designer de Produto e UX/UI, LARAF</li>
+        </ul>
+        <h3>Idiomas —</h3>
+        <ul>
+          <li>Inglês avançado</li>
+        </ul>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Painéis dos projetos -->
+  <dialog class="painel projeto" id="p-cursor" aria-labelledby="p-cursor-t">
+    <button class="fechar" data-fechar aria-label="Voltar">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5M11 5l-7 7 7 7"/></svg>
+    </button>
+    <span class="numero-fundo" aria-hidden="true">02</span>
+    <div class="projeto-topo">
+      <div class="projeto-texto">
+        <p class="painel-meta">02 — 2026 · Projeto pessoal</p>
+        <h2 id="p-cursor-t" class="painel-titulo">Cursor</h2>
+        <p class="painel-destaque">Calculadora de trajetória acadêmica para alunos da UFPA. Você envia o PDF do histórico do SIGAA e vê, em uma página, em que ponto do curso está e quanto falta para se formar.</p>
+        <div class="acoes">
+          <a class="botao" href="https://cursor-vfrg.onrender.com" target="_blank" rel="noopener noreferrer">Abrir o site</a>
+          <a class="botao botao-vazado" href="https://github.com/joaovictor-rl/cursor" target="_blank" rel="noopener noreferrer">Ver código</a>
+        </div>
+        <p class="nota">Hospedado no plano gratuito do Render: se o site estiver parado, o primeiro acesso pode levar até um minuto.</p>
+      </div>
+
+      <figure class="captura">
+        <img src="assets/img/cursor.jpg" alt="Tela inicial do Cursor, com visual de jornal: o título Cursor em destaque, um texto de apresentação e a área para arrastar o PDF do histórico." width="1280" height="800" loading="lazy">
+        <figcaption>Tela inicial do Cursor, com visual de jornal.</figcaption>
+      </figure>
+    </div>
+
+    <div class="colunas">
+      <div>
+        <h3>O que ele mostra —</h3>
+        <ul>
+          <li>CRG e CR de cada semestre, com gráfico</li>
+          <li>Carga horária cumprida e exigida</li>
+          <li>Disciplinas concluídas e pendentes</li>
+          <li>Previsão de formatura pelo ritmo do aluno</li>
+          <li>Simulador do próximo semestre</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Como funciona —</h3>
+        <ul>
+          <li>O React envia o PDF para uma API em FastAPI</li>
+          <li>pdfplumber e expressões regulares leem o histórico</li>
+          <li>pandas organiza os dados e calcula CR, horas e previsão</li>
+          <li>Recharts desenha os gráficos</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Privacidade —</h3>
+        <ul>
+          <li>O PDF é lido na memória e descartado</li>
+          <li>Sem banco de dados: nada fica salvo</li>
+          <li>Validação com Pydantic e cabeçalhos de segurança</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Qualidade —</h3>
+        <ul>
+          <li>25 testes automatizados com pytest</li>
+          <li>Docker e deploy automático no Render</li>
+          <li>Roda no Windows com um único comando</li>
+        </ul>
+      </div>
+    </div>
+
+    <ul class="tags"><li>Python</li><li>FastAPI</li><li>pdfplumber</li><li>pandas</li><li>React</li><li>Recharts</li><li>Vite</li><li>Docker</li><li>pytest</li></ul>
+  </dialog>
+
+  <dialog class="painel projeto invertido" id="p-labiocad" aria-labelledby="p-labiocad-t">
+    <button class="fechar" data-fechar aria-label="Voltar">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5M11 5l-7 7 7 7"/></svg>
+    </button>
+    <span class="numero-fundo" aria-hidden="true">01</span>
+    <div class="projeto-topo">
+      <figure class="captura">
+        <img src="assets/img/labiocad.jpg" alt="Página inicial do site do LaBioCAD: menu com Início, Pesquisa, Publicações, Equipe e Sobre, e o título Bioinformática de Alto Desempenho." width="1280" height="900" loading="lazy">
+        <figcaption>Página inicial do site, com o título do laboratório em destaque.</figcaption>
+      </figure>
+      <div class="projeto-texto">
+        <p class="painel-meta">01 — 2025 · Projeto pessoal</p>
+        <h2 id="p-labiocad-t" class="painel-titulo">LaBioCAD</h2>
+        <p class="painel-destaque">Site do Laboratório de Bioinformática e Computação de Alto Desempenho da UFPA, refeito em React e TypeScript a partir do site original do grupo.</p>
+        <div class="acoes">
+          <a class="botao" href="https://joaovictor-rl.github.io/Labiocad/" target="_blank" rel="noopener noreferrer">Abrir o site</a>
+          <a class="botao botao-vazado" href="https://github.com/joaovictor-rl/LaBioCAD" target="_blank" rel="noopener noreferrer">Ver código</a>
+        </div>
+        <p class="nota">Projeto independente, sem vínculo oficial com a UFPA ou com o laboratório.</p>
+      </div>
+    </div>
+
+    <div class="colunas">
+      <div>
+        <h3>O que ele mostra —</h3>
+        <ul>
+          <li>Páginas de pesquisa, publicações, equipe e sobre</li>
+          <li>Gráficos de publicações por ano e da equipe por nível</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Como funciona —</h3>
+        <ul>
+          <li>Componentes React reutilizáveis</li>
+          <li>Dados do laboratório em um único lugar</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Publicação —</h3>
+        <ul>
+          <li>Sem back-end: site estático</li>
+          <li>Hospedado de graça no GitHub Pages</li>
+        </ul>
+      </div>
+    </div>
+
+    <ul class="tags"><li>React</li><li>TypeScript</li><li>Vite</li><li>React Router</li><li>Recharts</li></ul>
+  </dialog>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>

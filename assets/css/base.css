@@ -1,0 +1,82 @@
+/* =========================================================
+   BASE — cores, fontes e regras gerais
+   ========================================================= */
+
+:root {
+    --tinta: #000;
+    --fundo: #1f3dff;
+    --degrade: linear-gradient(160deg, #2a5cff 0%, #1f3dff 45%, #2a0fd6 100%);
+    --texto: #f2f2f2;
+    --destaque: #eef3ff;
+
+    --fonte: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+    --serifa: 'Bodoni Moda', 'Didot', Georgia, serif;
+    --etiqueta: 'Oswald', 'Arial Narrow', sans-serif;
+    --margem: clamp(1.25rem, 4vw, 3.5rem);
+}
+
+* {
+    box-sizing: border-box;
+    scrollbar-width: none;
+}
+
+/* Esconde a barra de rolagem (a rolagem continua funcionando) */
+*::-webkit-scrollbar { display: none; }
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    overflow: hidden;
+    font-family: var(--fonte);
+    font-size: 14px;
+    line-height: 1.15;
+    color: var(--texto);
+    background: var(--degrade);
+    background-attachment: fixed;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--texto);
+    outline-offset: 4px;
+}
+
+/* Texto que só leitores de tela enxergam */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+/* Celular: a página passa a rolar normalmente */
+@media (max-width: 900px) {
+    body { overflow: auto; }
+}
+
+/* Quem prefere menos movimento não vê animações */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}

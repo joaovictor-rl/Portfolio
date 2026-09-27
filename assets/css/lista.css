@@ -1,0 +1,164 @@
+/* =========================================================
+   LISTA DE PROJETOS — títulos grandes à direita
+   ========================================================= */
+
+.palco {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+}
+
+.projetos {
+    position: absolute;
+    top: 0;
+    right: var(--margem);
+    display: flex;
+    flex-direction: column;
+    justify-content: safe center;
+    width: min(62vw, 980px);
+    height: 100%;
+    padding: 8vh 3.5rem;   /* folga para a inclinação e a pincelada não serem cortadas */
+    overflow-y: auto;
+    perspective: 1000px;
+    pointer-events: auto;
+}
+
+/* ---------- Cada título: estilo capa de revista, cada um numa inclinação ---------- */
+
+.projetos li {
+    --giro: -8deg;
+    text-align: right;
+    transform: rotate(var(--giro));
+    transform-origin: right center;
+    transition: transform 1.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.projetos li:nth-child(2) { --giro: -15deg; }
+
+.projetos a {
+    display: inline-block;
+    font-family: var(--serifa);
+    font-size: clamp(3.2rem, 8.5vw, 8.2rem);
+    font-weight: 900;
+    font-variant-caps: small-caps;
+    line-height: 0.82;
+    letter-spacing: -0.01em;
+    color: var(--destaque);
+    text-shadow: 0.05em 0.05em 0 var(--tinta);
+    transition: color 0.3s ease;
+    position: relative;
+    isolation: isolate;   /* deixa a pincelada atrás do texto */
+}
+
+.projetos a:focus-visible { outline-color: var(--destaque); }
+
+/* Etiqueta preta com ano e tecnologias, embaixo do título */
+.projetos small {
+    display: block;
+    width: fit-content;
+    margin: 0.5rem 0 0 auto;
+    padding: 0.3em 0.7em;
+    font-family: var(--etiqueta);
+    font-size: 13px;
+    font-weight: 500;
+    font-variant-caps: normal;
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+    text-transform: uppercase;
+    text-shadow: none;
+    color: #fff;
+    background: var(--tinta);
+    transform: rotate(-2deg);
+    -webkit-text-stroke: 0;
+}
+
+/* Pincelada (img/pincel.svg): escondida até o mouse passar no título,
+   aí é "pintada" da esquerda para a direita */
+.projetos a::before {
+    content: "";
+    position: absolute;
+    inset: -16% -8% -12% -14%;
+    z-index: -1;
+    background: url("../img/pincel.svg") center / 100% 100% no-repeat;
+    transform: rotate(-4deg);
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.45s cubic-bezier(0.6, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+/* ---------- Mouse em cima: título cresce, endireita e fica vazado ---------- */
+
+.projetos li:hover,
+.projetos li:focus-within {
+    transform: rotate(calc(var(--giro) + 5deg)) scale(1.06);
+}
+
+.projetos a:hover,
+.projetos a:focus-visible {
+    color: transparent;
+    text-shadow: none;
+    -webkit-text-stroke: 2px var(--destaque);
+}
+
+.projetos a:hover::before,
+.projetos a:focus-visible::before {
+    clip-path: inset(0 0 0 0);
+}
+
+/* ---------- Entrada: a lista desce e cada título gira até o lugar ---------- */
+/* O script tira a classe "intro" do <body> quando a animação termina */
+
+@media (min-width: 901px) {
+    .intro .projetos {
+        pointer-events: none;
+        animation: descer 2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    }
+
+    .intro .projetos li {
+        animation: girar 2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    }
+
+    .intro .projetos li:nth-child(1) { animation-delay: 0.9s; }
+    .intro .projetos li:nth-child(2) { animation-delay: 0.75s; }
+}
+
+@keyframes descer {
+    from { transform: translateY(-110%); }
+}
+
+@keyframes girar {
+    from {
+        opacity: 0;
+        transform: rotate(var(--giro)) rotateY(-100deg);
+    }
+}
+
+/* ---------- Celular: lista reta, sem inclinação ---------- */
+
+@media (max-width: 900px) {
+    .palco {
+        position: relative;
+        padding: 6.5rem var(--margem) 2rem;
+        overflow-x: clip;   /* a pincelada não cria rolagem para o lado */
+    }
+
+    .projetos {
+        position: static;
+        width: 100%;
+        height: auto;
+        padding: 0;
+        overflow: visible;
+    }
+
+    .projetos li,
+    .projetos li:hover,
+    .projetos li:focus-within {
+        margin-bottom: 0.9rem;
+        text-align: left;
+        transform: none;
+    }
+
+    .projetos a { font-size: clamp(2.6rem, 13vw, 4.2rem); }
+
+    .projetos small { margin-left: 0; }
+}

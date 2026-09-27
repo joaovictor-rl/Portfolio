@@ -1,0 +1,92 @@
+/* =========================================================
+   NOME (canto superior esquerdo) E INFORMAÇÕES (inferior esquerdo)
+   ========================================================= */
+
+.logo {
+    position: fixed;
+    top: var(--margem);
+    left: var(--margem);
+    z-index: 3;
+    display: block;
+    width: fit-content;
+    font-family: var(--serifa);
+    font-size: clamp(2.2rem, 3.8vw, 3.4rem);
+    font-weight: 900;
+    font-variant-caps: small-caps;
+    line-height: 0.8;
+    color: #fff;
+    text-shadow: 0.05em 0.05em 0 var(--tinta);
+    transition: color 0.3s ease;
+}
+
+/* Mouse em cima: o nome fica vazado */
+.logo:hover,
+.logo:focus-visible {
+    color: transparent;
+    text-shadow: none;
+    -webkit-text-stroke: 1.5px #fff;
+}
+
+/* Cada linha do nome sobe ao carregar a página */
+.linha {
+    display: block;
+    overflow: hidden;
+    padding-top: 0.14em;   /* espaço para o til do "Ã" não ser cortado */
+    margin-top: -0.14em;
+}
+
+.linha > span {
+    display: block;
+    animation: subir 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.linha:nth-child(2) > span { animation-delay: 0.08s; }
+.linha:nth-child(3) > span { animation-delay: 0.16s; }
+
+@keyframes subir {
+    from { transform: translateY(105%); }
+}
+
+/* ---------- Informações ---------- */
+
+.marca {
+    position: fixed;
+    left: var(--margem);
+    bottom: var(--margem);
+    z-index: 2;
+}
+
+.info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem clamp(1.5rem, 4vw, 3.5rem);
+}
+
+.info li { margin-bottom: 0.3rem; }
+
+.info a { font-weight: 500; }
+
+.info a:hover { text-decoration: underline; }
+
+/* Números pequenos do menu (01, 02, 03) */
+.info small {
+    margin-right: 1.4rem;
+    font-size: 9px;
+    font-weight: 400;
+}
+
+/* ---------- Celular ---------- */
+
+@media (max-width: 900px) {
+    .logo {
+        position: absolute;
+        font-size: 1.6rem;
+    }
+
+    .marca {
+        position: static;
+        padding: 2rem var(--margem) var(--margem);
+    }
+
+    .info { flex-direction: column; }
+}

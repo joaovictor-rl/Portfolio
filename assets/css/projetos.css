@@ -1,0 +1,332 @@
+/* =========================================================
+   PAINÉIS — telas que abrem por cima da página
+   ("Sobre mim" e um painel para cada projeto)
+   ========================================================= */
+
+.painel {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+    padding: clamp(4.5rem, 10vh, 7rem) var(--margem) var(--margem);
+    overflow-y: auto;
+    border: none;
+    color: var(--texto);
+    background: var(--degrade);
+}
+
+.painel::backdrop { background: transparent; }
+
+/* Cores de cada projeto */
+#p-cursor {
+    --fundo: #f24a0c;
+    --degrade: linear-gradient(160deg, #ff6a1a 0%, #f24a0c 45%, #d6200f 100%);
+}
+
+#p-labiocad {
+    --fundo: #0d9a3f;
+    --degrade: linear-gradient(160deg, #14b04a 0%, #0d9a3f 45%, #0a7a55 100%);
+}
+
+/* ---------- Abrir e fechar ---------- */
+/* O painel aparece num círculo que cresce a partir do clique.
+   O script guarda a posição do clique em --x e --y. */
+
+.painel[open]    { animation: revelar 0.75s cubic-bezier(0.7, 0, 0.2, 1) both; }
+.painel.fechando { animation: esconder 0.5s cubic-bezier(0.7, 0, 0.2, 1) both; }
+
+@keyframes revelar {
+    from { clip-path: circle(0 at var(--x, 50%) var(--y, 50%)); }
+    to   { clip-path: circle(150% at var(--x, 50%) var(--y, 50%)); }
+}
+
+@keyframes esconder {
+    from { clip-path: circle(150% at var(--x, 50%) var(--y, 50%)); }
+    to   { clip-path: circle(0 at var(--x, 50%) var(--y, 50%)); }
+}
+
+/* O conteúdo sobe logo depois do círculo */
+.painel[open] > :not(.fechar, .projeto-topo),
+.painel[open] .projeto-texto > * {
+    animation: entrar 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.35s both;
+}
+
+.painel[open] .captura {
+    animation: entrar-imagem 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.45s both;
+}
+
+.painel[open] > .colunas,
+.painel[open] > .tags { animation-delay: 0.5s; }
+
+@keyframes entrar {
+    from { opacity: 0; transform: translateY(30px); }
+}
+
+@keyframes entrar-imagem {
+    from { opacity: 0; transform: translateY(40px) rotate(4deg) scale(0.95); }
+}
+
+/* ---------- Botão voltar ---------- */
+
+.fechar {
+    position: absolute;
+    top: calc(var(--margem) * 0.5);
+    right: var(--margem);
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    padding: 0;
+    border: 2px solid var(--texto);
+    border-radius: 50%;
+    color: var(--texto);
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.fechar svg {
+    width: 1.4rem;
+    height: 1.4rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.fechar:hover {
+    color: var(--fundo);
+    background: var(--texto);
+    transform: translateX(-3px);
+}
+
+/* ---------- Textos ---------- */
+
+.painel-destaque {
+    max-width: 22em;
+    margin: 0 0 2rem;
+    font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: justify;
+    hyphens: auto;
+}
+
+.painel-texto {
+    max-width: 32em;
+    margin: 0 0 1.4rem;
+    font-size: clamp(1.1rem, 1.7vw, 1.5rem);
+    line-height: 1.5;
+    text-align: justify;
+    hyphens: auto;
+}
+
+/* Etiqueta preta: "01 — 2025 · Projeto pessoal" */
+.painel-meta {
+    display: inline-block;
+    margin: 0 0 1rem;
+    padding: 0.3em 0.7em;
+    font-family: var(--etiqueta);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: var(--tinta);
+    transform: rotate(-2deg);
+}
+
+.painel-titulo {
+    margin: 0 0 2rem;
+    font-family: var(--serifa);
+    font-size: clamp(3.2rem, 7vw, 6.2rem);
+    font-weight: 900;
+    font-variant-caps: small-caps;
+    line-height: 0.85;
+    color: var(--destaque);
+    text-shadow: 0.05em 0.05em 0 var(--tinta);
+}
+
+.nota {
+    margin: 0.8rem 0 0;
+    font-size: 12px;
+    opacity: 0.85;
+}
+
+/* ---------- Colunas (formação, tecnologias, detalhes do projeto...) ---------- */
+
+.colunas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 2rem clamp(1.5rem, 3vw, 3rem);
+    max-width: 1300px;
+    margin-top: 3.5rem;
+}
+
+.colunas h3 {
+    margin: 0 0 0.6rem;
+    font-family: var(--etiqueta);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.colunas ul { margin-bottom: 1.5rem; }
+
+.colunas li {
+    padding: 0.45rem 0;
+    border-top: 1px solid rgb(255 255 255 / 0.3);
+    line-height: 1.3;
+}
+
+/* Nos projetos, o 1º item de cada coluna fica na mesma altura, o 2º também...
+   (subgrid: as colunas dividem as mesmas linhas) */
+.projeto .colunas {
+    grid-template-rows: repeat(6, auto);   /* título + até 5 itens */
+    row-gap: 0;
+}
+
+.projeto .colunas > div {
+    display: grid;
+    grid-row: span 6;
+    grid-template-rows: subgrid;
+}
+
+.projeto .colunas ul { display: contents; }
+
+/* ---------- Tecnologias e botões ---------- */
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    max-width: 40rem;
+    margin: 2rem 0;
+}
+
+.tags li {
+    padding: 0.35rem 0.8rem;
+    border: 1px solid var(--texto);
+    border-radius: 999px;
+    font-size: 13px;
+}
+
+.acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.botao {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border: 2px solid var(--texto);
+    font-family: var(--etiqueta);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--fundo);
+    background: var(--texto);
+    transition: background 0.2s, color 0.2s;
+}
+
+.botao:hover,
+.botao-vazado {
+    color: var(--texto);
+    background: transparent;
+}
+
+.botao-vazado:hover {
+    color: var(--fundo);
+    background: var(--texto);
+}
+
+/* ---------- Projeto: texto de um lado, imagem do outro ---------- */
+
+.projeto-topo {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: start;
+    max-width: 1300px;
+}
+
+.projeto-texto .painel-destaque { max-width: none; }
+
+.captura { margin: 1rem 0 0; }
+
+.captura img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 3px solid var(--tinta);
+    box-shadow: 10px 10px 0 var(--tinta);
+    transform: rotate(-1deg);
+}
+
+.captura figcaption {
+    margin-top: 1.1rem;
+    font-size: 12px;
+    opacity: 0.85;
+}
+
+/* Número grande e vazado no canto de cima, atrás do título */
+.numero-fundo {
+    position: absolute;
+    top: -0.04em;
+    left: calc(var(--margem) * 0.2);
+    font-family: var(--serifa);
+    font-size: clamp(10rem, 24vw, 22rem);
+    font-weight: 900;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 3px var(--destaque);
+    opacity: 0.35;
+    rotate: -12deg;   /* separado de "transform" para não brigar com a animação */
+    pointer-events: none;
+    user-select: none;
+}
+
+.projeto > :not(.fechar, .numero-fundo) {
+    position: relative;
+    z-index: 1;
+}
+
+/* Versão espelhada (LaBioCAD): imagem à esquerda, texto e número à direita */
+.invertido .projeto-topo { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+.invertido .projeto-texto { text-align: right; }
+.invertido .projeto-texto .painel-destaque { text-align-last: right; }
+.invertido .acoes { justify-content: flex-end; }
+.invertido .painel-meta { transform: rotate(2deg); }
+.invertido .captura img { transform: rotate(1deg); }
+
+.invertido .numero-fundo {
+    left: auto;
+    right: calc(var(--margem) * 0.2);
+    rotate: 12deg;
+}
+
+/* ---------- Celular: tudo em uma coluna ---------- */
+
+@media (max-width: 900px) {
+    .fechar { position: fixed; }
+
+    .projeto-topo,
+    .invertido .projeto-topo { grid-template-columns: 1fr; }
+
+    .projeto-texto .painel-destaque { font-size: 1.15rem; }
+
+    .numero-fundo { font-size: 12rem; }
+
+    .invertido .projeto-texto { order: -1; text-align: left; }
+    .invertido .projeto-texto .painel-destaque { text-align-last: auto; }
+    .invertido .acoes { justify-content: flex-start; }
+
+    .projeto .colunas { grid-template-rows: none; row-gap: 2rem; }
+    .projeto .colunas > div { display: block; grid-row: auto; }
+    .projeto .colunas ul { display: block; margin-bottom: 0; }
+}
