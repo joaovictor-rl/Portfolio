@@ -31,7 +31,13 @@
     transform: rotate(var(--giro));
     transform-origin: right center;
     transition: transform 1.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    pointer-events: none;   /* só o texto (o link) recebe o mouse, não a linha inteira */
 }
+
+.projetos a { pointer-events: auto; }
+
+/* espaço entre os títulos, para as caixas inclinadas não se sobreporem */
+.projetos li + li { margin-top: 3rem; }
 
 .projetos li:nth-child(2) { --giro: -15deg; }
 
@@ -88,7 +94,7 @@
 
 /* ---------- Mouse em cima: título cresce, endireita e fica vazado ---------- */
 
-.projetos li:hover,
+.projetos li:has(a:hover),
 .projetos li:focus-within {
     transform: rotate(calc(var(--giro) + 5deg)) scale(1.06);
 }

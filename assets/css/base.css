@@ -56,6 +56,14 @@ button:focus-visible {
     outline-offset: 4px;
 }
 
+/* Na tela inicial o texto não pode ser selecionado com o mouse
+   (nos painéis continua podendo, para copiar e-mail ou links) */
+.palco,
+.marca {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
 /* Texto que só leitores de tela enxergam */
 .sr-only {
     position: absolute;
