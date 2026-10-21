@@ -26,6 +26,7 @@
     <ul class="projetos">
       <li><a href="#p-cursor" data-abrir="p-cursor">Cursor<small>2026 · Python + React</small></a></li>
       <li><a href="#p-labiocad" data-abrir="p-labiocad">LaBio-<br>CAD<small>2025 · React + TypeScript</small></a></li>
+      <li><a href="#p-cronica" data-abrir="p-cronica">Crônica<small>2026 · Python + FastAPI</small></a></li>
     </ul>
   </main>
 
@@ -225,6 +226,70 @@
     </div>
 
     <ul class="tags"><li>React</li><li>TypeScript</li><li>Vite</li><li>React Router</li><li>Recharts</li></ul>
+  </dialog>
+
+  <dialog class="painel projeto" id="p-cronica" aria-labelledby="p-cronica-t">
+    <button class="fechar" data-fechar aria-label="Voltar">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5M11 5l-7 7 7 7"/></svg>
+    </button>
+    <span class="numero-fundo" aria-hidden="true">03</span>
+    <div class="projeto-topo">
+      <div class="projeto-texto">
+        <p class="painel-meta">03 — 2026 · Projeto pessoal</p>
+        <h2 id="p-cronica-t" class="painel-titulo">Crônica</h2>
+        <p class="painel-destaque">Versões, comparação e escrita em grupo de artigos acadêmicos. Cada vez que o pesquisador salva, fica uma versão, e dá para ver frase por frase o que mudou.</p>
+        <div class="acoes">
+          <a class="botao" href="https://cronica.onrender.com" target="_blank" rel="noopener noreferrer">Abrir o site</a>
+          <a class="botao botao-vazado" href="https://github.com/joaovictor-rl/Cronica" target="_blank" rel="noopener noreferrer">Ver código</a>
+        </div>
+        <p class="nota">Hospedado no plano gratuito do Render: se o site estiver parado, o primeiro acesso pode levar até um minuto.</p>
+      </div>
+
+      <figure class="captura">
+        <img src="assets/img/cronica.jpg" alt="Artigo de demonstração no Crônica: o histórico com as quatro versões e a aba O que mudou, comparando frase por frase a versão atual com a anterior." width="1280" height="800" loading="lazy">
+        <figcaption>Comparação entre duas versões de um artigo.</figcaption>
+      </figure>
+    </div>
+
+    <div class="colunas">
+      <div>
+        <h3>O que ele faz —</h3>
+        <ul>
+          <li>Editor no site, sem precisar saber LaTeX</li>
+          <li>Histórico de versões e comparação frase a frase</li>
+          <li>PDF de cada versão nos formatos ABNT, SBC e IEEE</li>
+          <li>Importa e exporta projetos do Overleaf</li>
+          <li>Organizações, convites e coautores</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Como funciona —</h3>
+        <ul>
+          <li>API REST em FastAPI</li>
+          <li>SQLAlchemy com PostgreSQL (Neon) ou SQLite</li>
+          <li>Arquivos guardados por conteúdo, como no Git</li>
+          <li>PDF gerado no servidor com reportlab</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Segurança —</h3>
+        <ul>
+          <li>Senhas com bcrypt e login com JWT</li>
+          <li>Limite de tentativas contra força bruta</li>
+          <li>Exportar e apagar a própria conta</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Qualidade —</h3>
+        <ul>
+          <li>113 testes automatizados com pytest</li>
+          <li>Testes no PostgreSQL pelo GitHub Actions</li>
+          <li>Deploy no Render só quando os testes passam</li>
+        </ul>
+      </div>
+    </div>
+
+    <ul class="tags"><li>Python</li><li>FastAPI</li><li>SQLAlchemy</li><li>PostgreSQL</li><li>JavaScript</li><li>pytest</li><li>GitHub Actions</li></ul>
   </dialog>
 
   <script src="assets/js/script.js"></script>

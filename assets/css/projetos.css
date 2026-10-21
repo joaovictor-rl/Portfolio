@@ -24,6 +24,11 @@
     --degrade: linear-gradient(160deg, #ff6a1a 0%, #f24a0c 45%, #d6200f 100%);
 }
 
+#p-cronica {
+    --fundo: #c41466;
+    --degrade: linear-gradient(160deg, #e0287a 0%, #c41466 45%, #9c0f5f 100%);
+}
+
 #p-labiocad {
     --fundo: #0d9a3f;
     --degrade: linear-gradient(160deg, #14b04a 0%, #0d9a3f 45%, #0a7a55 100%);
