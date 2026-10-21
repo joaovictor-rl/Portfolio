@@ -43,8 +43,11 @@
     --giro: 2.5deg;
     --endireita: -5deg;
 }
-.projetos li:nth-child(2) { margin-top: 1.75rem; }   /* o Crônica, inclinado ao contrário, já deixa espaço */
-.projetos li:nth-child(3) { --giro: -15deg; }
+.projetos li:nth-child(2) { margin-top: 2.75rem; }   /* o Crônica, inclinado ao contrário, já deixa espaço */
+.projetos li:nth-child(3) {
+    --giro: -15deg;
+    margin-top: 2rem;
+}
 
 .projetos a {
     display: inline-block;
