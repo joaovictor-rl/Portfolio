@@ -17,7 +17,7 @@
     justify-content: safe center;
     width: min(62vw, 980px);
     height: 100%;
-    padding: 8vh 3.5rem;   /* folga para a inclinação e a pincelada não serem cortadas */
+    padding: 8vh 3.5rem;   /* folga para a inclinação não ser cortada */
     overflow-y: auto;
     perspective: 1000px;
     pointer-events: auto;
@@ -52,8 +52,6 @@
     color: var(--destaque);
     text-shadow: 0.05em 0.05em 0 var(--tinta);
     transition: color 0.3s ease;
-    position: relative;
-    isolation: isolate;   /* deixa a pincelada atrás do texto */
 }
 
 .projetos a:focus-visible { outline-color: var(--destaque); }
@@ -78,20 +76,6 @@
     -webkit-text-stroke: 0;
 }
 
-/* Pincelada (img/pincel.svg): escondida até o mouse passar no título,
-   aí é "pintada" da esquerda para a direita */
-.projetos a::before {
-    content: "";
-    position: absolute;
-    inset: -16% -8% -12% -14%;
-    z-index: -1;
-    background: url("../img/pincel.svg") center / 100% 100% no-repeat;
-    transform: rotate(-4deg);
-    clip-path: inset(0 100% 0 0);
-    transition: clip-path 0.45s cubic-bezier(0.6, 0, 0.2, 1);
-    pointer-events: none;
-}
-
 /* ---------- Mouse em cima: título cresce, endireita e fica vazado ---------- */
 
 .projetos li:has(a:hover),
@@ -104,11 +88,6 @@
     color: transparent;
     text-shadow: none;
     -webkit-text-stroke: 2px var(--destaque);
-}
-
-.projetos a:hover::before,
-.projetos a:focus-visible::before {
-    clip-path: inset(0 0 0 0);
 }
 
 /* ---------- Entrada: a lista desce e cada título gira até o lugar ---------- */
@@ -145,7 +124,7 @@
     .palco {
         position: relative;
         padding: 6.5rem var(--margem) 2rem;
-        overflow-x: clip;   /* a pincelada não cria rolagem para o lado */
+        overflow-x: clip;   /* os títulos não criam rolagem para o lado */
     }
 
     .projetos {
