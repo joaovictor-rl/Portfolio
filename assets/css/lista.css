@@ -40,6 +40,11 @@
 .projetos li + li { margin-top: 3rem; }
 
 .projetos li:nth-child(2) { --giro: -15deg; }
+.projetos li:nth-child(3) {   /* inclinado para o outro lado, por isso precisa de mais espaço em cima */
+    --giro: 2.5deg;
+    --endireita: -5deg;
+    margin-top: 6rem;
+}
 
 .projetos a {
     display: inline-block;
@@ -80,7 +85,7 @@
 
 .projetos li:has(a:hover),
 .projetos li:focus-within {
-    transform: rotate(calc(var(--giro) + 5deg)) scale(1.06);
+    transform: rotate(calc(var(--giro) + var(--endireita, 5deg))) scale(1.06);
 }
 
 .projetos a:hover,
@@ -105,6 +110,7 @@
 
     .intro .projetos li:nth-child(1) { animation-delay: 0.9s; }
     .intro .projetos li:nth-child(2) { animation-delay: 0.75s; }
+    .intro .projetos li:nth-child(3) { animation-delay: 0.6s; }
 }
 
 @keyframes descer {
