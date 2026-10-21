@@ -116,8 +116,7 @@
     font-size: clamp(1.5rem, 2.6vw, 2.1rem);
     font-weight: 500;
     line-height: 1.2;
-    text-align: justify;
-    hyphens: auto;
+    text-align: left;
 }
 
 .painel-texto {
@@ -125,8 +124,7 @@
     margin: 0 0 1.4rem;
     font-size: clamp(1.1rem, 1.7vw, 1.5rem);
     line-height: 1.5;
-    text-align: justify;
-    hyphens: auto;
+    text-align: left;
 }
 
 /* Etiqueta preta: "01 — 2025 · Projeto pessoal" */
@@ -304,7 +302,7 @@
 /* Versão espelhada (LaBioCAD): imagem à esquerda, texto e número à direita */
 .invertido .projeto-topo { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
 .invertido .projeto-texto { text-align: right; }
-.invertido .projeto-texto .painel-destaque { text-align-last: right; }
+.invertido .projeto-texto .painel-destaque { text-align: right; }
 .invertido .acoes { justify-content: flex-end; }
 .invertido .painel-meta { transform: rotate(2deg); }
 .invertido .captura img { transform: rotate(1deg); }
@@ -328,7 +326,7 @@
     .numero-fundo { font-size: 12rem; }
 
     .invertido .projeto-texto { order: -1; text-align: left; }
-    .invertido .projeto-texto .painel-destaque { text-align-last: auto; }
+    .invertido .projeto-texto .painel-destaque { text-align: left; }
     .invertido .acoes { justify-content: flex-start; }
 
     .projeto .colunas { grid-template-rows: none; row-gap: 2rem; }

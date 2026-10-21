@@ -39,12 +39,12 @@
 /* espaço entre os títulos, para as caixas inclinadas não se sobreporem */
 .projetos li + li { margin-top: 3rem; }
 
-.projetos li:nth-child(2) { --giro: -15deg; }
-.projetos li:nth-child(3) {   /* inclinado para o outro lado, por isso precisa de mais espaço em cima */
+.projetos li:nth-child(1) {   /* Crônica: inclinado para o outro lado */
     --giro: 2.5deg;
     --endireita: -5deg;
-    margin-top: 6rem;
 }
+.projetos li:nth-child(2) { margin-top: 1.75rem; }   /* o Crônica, inclinado ao contrário, já deixa espaço */
+.projetos li:nth-child(3) { --giro: -15deg; }
 
 .projetos a {
     display: inline-block;
