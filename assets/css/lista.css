@@ -26,7 +26,6 @@
 /* ---------- Cada título: estilo capa de revista, cada um numa inclinação ---------- */
 
 .projetos li {
-    --giro: -8deg;
     text-align: right;
     transform: rotate(var(--giro));
     transform-origin: right center;
@@ -36,23 +35,18 @@
 
 .projetos a { pointer-events: auto; }
 
-/* espaço entre os títulos, para as caixas inclinadas não se sobreporem */
-.projetos li + li { margin-top: 3rem; }
-
-.projetos li:nth-child(1) {   /* Crônica: inclinado para o outro lado */
-    --giro: 2.5deg;
-    --endireita: -5deg;
-}
-.projetos li:nth-child(2) { margin-top: 2.75rem; }   /* o Crônica, inclinado ao contrário, já deixa espaço */
-.projetos li:nth-child(3) {
-    --giro: -15deg;
-    margin-top: 2rem;
-}
+/* Inclinação de cada título: alterna para um lado e para o outro, em zigue-zague.
+   Como cada um gira em volta da ponta direita, a margem compensa a inclinação:
+   quem vem depois de um título inclinado para baixo precisa de mais espaço. */
+.projetos li:nth-child(1) { --giro: -7deg; }                    /* Musa */
+.projetos li:nth-child(2) { --giro: 3deg;  margin-top: 4.5rem; } /* Thesaurus Indexer */
+.projetos li:nth-child(3) { --giro: -6deg; margin-top: 1.5rem; } /* Crônica */
+.projetos li:nth-child(4) { --giro: 3deg;  margin-top: 4rem; }   /* Cursor */
 
 .projetos a {
     display: inline-block;
     font-family: var(--serifa);
-    font-size: clamp(3.2rem, 8.5vw, 8.2rem);
+    font-size: clamp(3.2rem, min(7vw, 11vh), 6.8rem);   /* diminui também em telas baixas */
     font-weight: 900;
     font-variant-caps: small-caps;
     line-height: 0.82;
@@ -88,7 +82,7 @@
 
 .projetos li:has(a:hover),
 .projetos li:focus-within {
-    transform: rotate(calc(var(--giro) + var(--endireita, 5deg))) scale(1.06);
+    transform: rotate(calc(var(--giro) * 0.3)) scale(1.06);   /* quase reto */
 }
 
 .projetos a:hover,
@@ -114,6 +108,7 @@
     .intro .projetos li:nth-child(1) { animation-delay: 0.9s; }
     .intro .projetos li:nth-child(2) { animation-delay: 0.75s; }
     .intro .projetos li:nth-child(3) { animation-delay: 0.6s; }
+    .intro .projetos li:nth-child(4) { animation-delay: 0.45s; }
 }
 
 @keyframes descer {
@@ -132,7 +127,7 @@
 @media (max-width: 900px) {
     .palco {
         position: relative;
-        padding: 6.5rem var(--margem) 2rem;
+        padding: 8rem var(--margem) 2rem;
         overflow-x: clip;   /* os títulos não criam rolagem para o lado */
     }
 
@@ -151,6 +146,9 @@
         text-align: left;
         transform: none;
     }
+
+    /* mesmo espaço entre todos os títulos */
+    .projetos li:nth-child(n+2) { margin-top: 1.5rem; }
 
     .projetos a { font-size: clamp(2.6rem, 13vw, 4.2rem); }
 

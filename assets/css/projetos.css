@@ -29,9 +29,14 @@
     --degrade: linear-gradient(160deg, #e0287a 0%, #c41466 45%, #9c0f5f 100%);
 }
 
-#p-labiocad {
+#p-indexer {
     --fundo: #0d9a3f;
     --degrade: linear-gradient(160deg, #14b04a 0%, #0d9a3f 45%, #0a7a55 100%);
+}
+
+#p-musa {
+    --fundo: #7a1fd1;
+    --degrade: linear-gradient(160deg, #9233ea 0%, #7a1fd1 45%, #5a12a8 100%);
 }
 
 /* ---------- Abrir e fechar ---------- */
@@ -299,7 +304,7 @@
     z-index: 1;
 }
 
-/* Versão espelhada (LaBioCAD): imagem à esquerda, texto e número à direita */
+/* Versão espelhada (Thesaurus Indexer): imagem à esquerda, texto e número à direita */
 .invertido .projeto-topo { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
 .invertido .projeto-texto { text-align: right; }
 .invertido .projeto-texto .painel-destaque { text-align: right; }
